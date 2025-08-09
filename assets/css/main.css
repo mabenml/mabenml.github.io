@@ -1698,19 +1698,21 @@ input, select, textarea {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #fff;
 }
 
 /* SVG sizing and subtle hover */
 .camera-icon {
   width: 64px;        /* adjust to taste */
   height: 64px;
-  display: block;
+  display: flex;
   transition: transform .18s ease;
 }
 .camera-icon:hover { transform: scale(1.06); }
 
 /* Example: color the icon white when inside header (if needed) */
 header .icon.camera-wrapper { color: #fff; }
+
 
 
 
