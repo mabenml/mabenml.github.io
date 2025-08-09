@@ -1702,7 +1702,7 @@ input, select, textarea {
 
 /* SVG sizing and subtle hover */
 .camera-icon {
-  width: 56px;        /* adjust to taste */
+  width: auto;        /* adjust to taste */
   height: auto;
   display: block;
   transition: transform .18s ease;
@@ -1711,4 +1711,5 @@ input, select, textarea {
 
 /* Example: color the icon white when inside header (if needed) */
 header .icon.camera-wrapper { color: #fff; }
+
 
