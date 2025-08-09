@@ -1691,26 +1691,22 @@ input, select, textarea {
 }
 
 /* Remove extra padding that the theme might add */
-.icon.camera-wrapper {
-  padding: 0 !important;
+.icon-container {
   width: 64px;
   height: 64px;
-  display: block;
-  align-items: center;
+  display: flex;
   justify-content: center;
-}
-
-/* SVG sizing and subtle hover */
-.camera-icon {
-  width: 64px;        /* adjust to taste */
-  height: 64px;
-  display: block;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #fff; /* Optional */
+  margin: 0 auto;
   transition: transform .18s ease;
 }
-.camera-icon:hover { transform: scale(1.06); }
+.icon-container:hover { transform: scale(1.06); }
 
 /* Example: color the icon white when inside header (if needed) */
-header .icon.camera-wrapper { color: #fff; }
+header .icon.container { color: #fff; }
+
 
 
 
