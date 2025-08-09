@@ -1684,13 +1684,31 @@ input, select, textarea {
 			transform: scale(1.05);
 		}
 
-.camera-icon {
-  width: 56px;      /* adjust to fit your header */
-  height: auto;
-  display: inline-block;
-  vertical-align: middle;
-  transition: transform .18s ease;
+/* Make a small wrapper class for this replacement and remove Dimension's pseudo */
+.icon.camera-wrapper::before,
+.icon.camera-wrapper::after {
+  display: none !important;
 }
 
-/* hover/active effects to match Dimension's style */
-.camera-icon:hover { transform: scale(1.08); }
+/* Remove extra padding that the theme might add */
+.icon.camera-wrapper {
+  padding: 0 !important;
+  width: auto;
+  height: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* SVG sizing and subtle hover */
+.camera-icon {
+  width: 56px;        /* adjust to taste */
+  height: auto;
+  display: block;
+  transition: transform .18s ease;
+}
+.camera-icon:hover { transform: scale(1.06); }
+
+/* Example: color the icon white when inside header (if needed) */
+header .icon.camera-wrapper { color: #fff; }
+
