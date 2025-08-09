@@ -1140,9 +1140,12 @@ input, select, textarea {
 			-ms-transition-delay: 0.75s;
 			transition-delay: 0.75s;
 			background-image: linear-gradient(to top, rgba(19, 21, 25, 0.5), rgba(19, 21, 25, 0.5)), url("../../images/overlay.png");
-			background-size: auto, 256px 256px;
-			background-position: center, center;
-			background-repeat: no-repeat, repeat;
+			background-size: auto,
+ 256px 256px;
+			background-position: center,
+ center;
+			background-repeat: no-repeat,
+ repeat;
 			z-index: 2;
 		}
 
@@ -1680,3 +1683,14 @@ input, select, textarea {
 		.gallery .image:hover img {
 			transform: scale(1.05);
 		}
+
+.camera-icon {
+  width: 56px;      /* adjust to fit your header */
+  height: auto;
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform .18s ease;
+}
+
+/* hover/active effects to match Dimension's style */
+.camera-icon:hover { transform: scale(1.08); }
