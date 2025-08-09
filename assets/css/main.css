@@ -1698,7 +1698,6 @@ input, select, textarea {
   display: block;
   align-items: center;
   justify-content: center;
-  background-color: #fff;
 }
 
 /* SVG sizing and subtle hover */
@@ -1712,6 +1711,7 @@ input, select, textarea {
 
 /* Example: color the icon white when inside header (if needed) */
 header .icon.camera-wrapper { color: #fff; }
+
 
 
 
