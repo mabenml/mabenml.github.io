@@ -1684,12 +1684,6 @@ input, select, textarea {
 			transform: scale(1.05);
 		}
 
-/* Make a small wrapper class for this replacement and remove Dimension's pseudo */
-.icon.camera-wrapper::before,
-.icon.camera-wrapper::after {
-  display: none !important;
-}
-
 /* Remove extra padding that the theme might add */
 .icon-container {
   width: 64px;
@@ -1706,6 +1700,7 @@ input, select, textarea {
 
 /* Example: color the icon white when inside header (if needed) */
 header .icon.container { color: #fff; }
+
 
 
 
