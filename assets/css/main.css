@@ -1695,7 +1695,7 @@ input, select, textarea {
   padding: 0 !important;
   width: 64px;
   height: 64px;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -1711,6 +1711,7 @@ input, select, textarea {
 
 /* Example: color the icon white when inside header (if needed) */
 header .icon.camera-wrapper { color: #fff; }
+
 
 
 
