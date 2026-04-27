@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+
+  <!-- SEO (jekyll-seo-tag) -->
+  {% seo %}
+
+  <!-- Analytics placeholder — uncomment and replace src to add Plausible or Fathom -->
+  <!-- <script defer data-domain="michaelmaben.com" src="https://plausible.io/js/script.js"></script> -->
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="{{ '/' | relative_url }}" class="nav-logo">Michael Maben</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" id="navToggle">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="{{ '/blog/' | relative_url }}" {% if page.url contains '/blog' %}class="active"{% endif %}>Blog</a></li>
+      <li><a href="{{ '/work/' | relative_url }}" {% if page.url contains '/work' %}class="active"{% endif %}>Detection Work</a></li>
+      <li><a href="{{ '/about/' | relative_url }}" {% if page.url contains '/about' %}class="active"{% endif %}>About</a></li>
+      <li><a href="https://linkedin.com/in/michaelmaben" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  {{ content }}
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="{{ '/blog/' | relative_url }}">Blog</a>
+    <a href="{{ '/work/' | relative_url }}">Detection Work</a>
+    <a href="{{ '/about/' | relative_url }}">About</a>
+    <a href="https://linkedin.com/in/michaelmaben" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/mabenml" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <p>© {{ site.time | date: "%Y" }} Michael Maben · Detection Engineer · michaelmaben.com</p>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  document.getElementById('navToggle').addEventListener('click', function () {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+</script>
+
+{% if page.layout == 'post' %}
+<!-- highlight.js for enhanced syntax highlighting (SPL, PowerShell, Sigma) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/powershell.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/yaml.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+<script>
+  // Register a minimal SPL alias using the 'sql' grammar as a base
+  hljs.registerAliases(['spl', 'splunk'], { languageName: 'sql' });
+  document.querySelectorAll('pre code').forEach(function(block) {
+    hljs.highlightElement(block);
+  });
+</script>
+{% endif %}
+
+</body>
+</html>

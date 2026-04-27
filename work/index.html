@@ -1,0 +1,69 @@
+---
+layout: default
+title: Detection Work
+description: Splunk detection content, PowerShell IR automation, and SOC tooling built by Michael Maben — federal detection engineer.
+---
+
+<section class="work-hero">
+  <div class="container">
+    <h1>Detection Work</h1>
+    <p>Public examples of what I build. Most of the real stuff lives behind a classification boundary — this is the sanitized subset worth sharing.</p>
+  </div>
+</section>
+
+<section style="border-top: none; padding-top: 0;">
+  <div class="container">
+
+    <!-- GitHub Detection Library -->
+    <h2 style="margin-bottom: 1rem;">GitHub</h2>
+
+    <div class="work-card">
+      <h3>
+        <!-- Replace href with actual repo URL when live -->
+        <a href="https://github.com/mabenml" target="_blank" rel="noopener">Splunk Detection Content — Sanitized Examples ↗</a>
+      </h3>
+      <p>
+        A growing collection of sanitized Splunk SPL correlation searches from SOC work,
+        organized by MITRE ATT&CK tactic. Includes search logic, relevant log sources,
+        and tuning notes for each detection.
+      </p>
+      <a class="card-link text-accent" href="https://github.com/mabenml" target="_blank" rel="noopener">
+        github.com/mabenml →
+      </a>
+    </div>
+
+    <!-- What I Build -->
+    <h2 style="margin: 2.5rem 0 1rem;">What I Build</h2>
+
+    <ul class="build-list">
+      <li>Splunk SPL correlation searches mapped to ATT&CK tactics and techniques</li>
+      <li>PowerShell automation for incident response acceleration</li>
+      <li>SOC dashboards for threat visibility and analyst workflow</li>
+      <li>Detection coverage gap analysis aligned to priority threat actor TTPs</li>
+      <li>Log source onboarding playbooks for new data sources</li>
+      <li>Sigma rules for cross-SIEM portability</li>
+    </ul>
+
+    <!-- Detection Philosophy -->
+    <h2 style="margin: 2.5rem 0 1rem;">Detection Philosophy</h2>
+
+    <div class="philosophy-block">
+      <p>
+        Good detection isn't about having the most alerts — it's about having the right ones.
+        I build detections starting from adversary behavior (ATT&CK TTPs, threat intel), work backward
+        to the log sources that would capture it, and tune aggressively to keep analyst
+        signal-to-noise ratios high.
+      </p>
+      <p style="margin-top: .75rem;">
+        A detection that fires constantly and gets ignored is worse than no detection at all.
+      </p>
+    </div>
+
+    <!-- Blog link -->
+    <p style="margin-top: 2.5rem; color: var(--muted);">
+      I write about the technical details on the
+      <a href="/blog/">blog</a> — SPL walkthroughs, ATT&CK coverage analysis, and threat hunting methodology.
+    </p>
+
+  </div>
+</section>

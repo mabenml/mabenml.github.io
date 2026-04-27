@@ -1,0 +1,113 @@
+---
+layout: default
+title: Blog
+description: Detection engineering content — Splunk SPL walkthroughs, MITRE ATT&CK mapping, threat hunting, and more.
+---
+
+<section class="blog-header">
+  <div class="container">
+    <h1>Blog</h1>
+    <p>Detection engineering content. Splunk SPL, MITRE ATT&CK, threat hunting, IR, and the occasional career piece.</p>
+  </div>
+</section>
+
+<section style="padding-top: 0; border-top: none;">
+  <div class="container">
+
+    <!-- Tag filter — populated by JS -->
+    <div class="tag-filter" id="tagFilter"></div>
+
+    <!-- Post list -->
+    <div class="post-list" id="postList">
+      {% if site.posts.size > 0 %}
+        {% for post in site.posts %}
+        <article class="post-list-item" data-tags="{{ post.tags | join: ',' | downcase }}">
+          <div>
+            <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+            <p class="excerpt">{{ post.description | default: post.excerpt | strip_html | truncatewords: 40 }}</p>
+            <div class="post-meta">
+              <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+              {% if post.read_time %}<span class="post-read-time">· {{ post.read_time }} min read</span>{% endif %}
+              <div class="card-tags">
+                {% for tag in post.tags %}
+                <button class="tag tag-filter-btn" data-tag="{{ tag | downcase | replace: ' ', '-' }}">{{ tag }}</button>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </article>
+        {% endfor %}
+      {% else %}
+        <p class="text-muted" style="padding: 2rem 0;">
+          No posts yet — check back soon. First post is in the queue.
+        </p>
+      {% endif %}
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function () {
+  // Collect all unique tags from posts
+  const items = document.querySelectorAll('.post-list-item');
+  const allTags = new Set();
+  items.forEach(function (item) {
+    const tags = item.dataset.tags.split(',').filter(Boolean);
+    tags.forEach(function (t) { allTags.add(t.trim()); });
+  });
+
+  // Build tag filter buttons
+  const filterEl = document.getElementById('tagFilter');
+  if (allTags.size === 0) { filterEl.style.display = 'none'; return; }
+
+  const allBtn = document.createElement('button');
+  allBtn.className = 'tag-btn active';
+  allBtn.textContent = 'All';
+  allBtn.dataset.tag = 'all';
+  filterEl.appendChild(allBtn);
+
+  allTags.forEach(function (tag) {
+    const btn = document.createElement('button');
+    btn.className = 'tag-btn';
+    btn.textContent = tag.replace(/-/g, ' ');
+    btn.dataset.tag = tag;
+    filterEl.appendChild(btn);
+  });
+
+  // Handle URL param on load
+  const params = new URLSearchParams(window.location.search);
+  const initialTag = params.get('tag');
+
+  function setFilter(tag) {
+    document.querySelectorAll('.tag-btn').forEach(function (b) {
+      b.classList.toggle('active', b.dataset.tag === tag || (tag === 'all' && b.dataset.tag === 'all'));
+    });
+    items.forEach(function (item) {
+      if (tag === 'all') {
+        item.classList.remove('hidden');
+      } else {
+        const tags = item.dataset.tags.split(',').map(function (t) { return t.trim(); });
+        item.classList.toggle('hidden', !tags.includes(tag));
+      }
+    });
+  }
+
+  filterEl.addEventListener('click', function (e) {
+    const btn = e.target.closest('.tag-btn');
+    if (!btn) return;
+    setFilter(btn.dataset.tag);
+  });
+
+  // Inline tag buttons inside post cards
+  document.querySelectorAll('.tag-filter-btn').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      setFilter(btn.dataset.tag);
+      filterEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  });
+
+  if (initialTag) setFilter(initialTag);
+})();
+</script>
